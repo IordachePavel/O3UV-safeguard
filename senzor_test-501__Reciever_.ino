@@ -10,7 +10,7 @@ int logCounter=0;
 int mongoose=0;
 File myFile;
 String stat="Ok",uv_status="Ok",senzor="Connectat",alarm="ON",vent="OFF";
-float con=0.01;//concentrația de ozon ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+float con=0.01;
 int enablePin=10;
 bool updated=false;
 int logs[10000]={0},ctTimp,page=1,cursorPos=2,cursorPos2=1,pageDepth=0;
@@ -20,7 +20,6 @@ int Timp=tm.Minute,Tst=tm.Minute;
 int kGraph[4]={1,2,3,4};
 int Ora,Minut,Secunda,Luna,Zi,An;
 void draw(void) {
-// graphic commands to redraw the complete screen should be placed here
 u8g.setFont(u8g_font_chikita);
 
 
@@ -98,17 +97,15 @@ void logUpdate(void){
   
       bool parse=false;
   bool config=false;
-
-  // get the date and time the compiler was run
   if (getDate(__DATE__) && getTime(__TIME__)) {
     parse = true;
-    // and configure the RTC with this info
+
     if (RTC.write(tm)) {
       config = true;
     }
   }
 
-  while (!Serial) ; // wait for Arduino Serial Monitor
+  while (!Serial) ; 
   if (parse && config) {
   } else if (parse) {
     Serial.println("DS1307 Communication Error :-{");
@@ -185,7 +182,6 @@ void updateData(void){
   u8g.print(":");
        TimeUnderTen(Minut);
   }
- // delay (100);
   Secunda++;
   if(Secunda>=3000){
     Secunda=1;
@@ -299,41 +295,24 @@ void setup(void) {
     bool parse=false;
   bool config=false;
 
-  // get the date and time the compiler was run
+  
   if (getDate(__DATE__) && getTime(__TIME__)) {
     parse = true;
-    // and configure the RTC with this info
+  
     if (RTC.write(tm)) {
       config = true;
     }
   }
 
   Serial.begin(9600);
-  while (!Serial) ; // wait for Arduino Serial Monitor
+  while (!Serial) ;
   delay(200);
-/*  if (parse && config) {
-    Serial.print("DS1307 configured Time=");
-    Serial.print(__TIME__);
-    Serial.print(", Date=");
-    Serial.println(__DATE__);
-  } else if (parse) {
-    Serial.println("DS1307 Communication Error :-{");
-    Serial.println("Please check your circuitry");
-  } else {
-    Serial.print("Could not parse info from the compiler, Time=\"");
-    Serial.print(__TIME__);
-    Serial.print("\", Date=\"");
-    Serial.print(__DATE__);
-    Serial.println("\"");
-  }*/
-  
-// assign default color value
 if ( u8g.getMode() == U8G_MODE_R3G3B2 )
-u8g.setColorIndex(255); // white
+u8g.setColorIndex(255); 
 else if ( u8g.getMode() == U8G_MODE_GRAY2BIT )
-u8g.setColorIndex(3); // max intensity
+u8g.setColorIndex(3); 
 else if ( u8g.getMode() == U8G_MODE_BW )
-u8g.setColorIndex(1); // pixel on
+u8g.setColorIndex(1); 
 Ora=tm.Hour;
 Minut=tm.Minute;
 Secunda=tm.Second/2*100;
@@ -450,7 +429,6 @@ void SettingPage(){
   }
 
 void PageTranslator(){
-//  if(updated){
   if(page==1)
   HomePage();
   if(page==2)
@@ -458,10 +436,8 @@ void PageTranslator(){
    if(page==3)
    SettingPage();
    if(page==4)
-   //GraphPage();
    if(page==5)
    drawTimeSettings();
-  //}
   updated=false;
   }
 
@@ -662,14 +638,12 @@ void Buzzer(){
 
    File dataFile = SD.open("datalogO3.txt", FILE_WRITE);
 
-  // if the file is available, write to it:
   if (dataFile) {
     dataFile.println(dataString);
     dataFile.close();
-    // print to the serial port too:
     Serial.println(dataString);
   }
-  // if the file isn't open, pop up an error:
+
   else {
     Serial.println("error opening datalog.txt");
   }
@@ -680,10 +654,10 @@ void Buzzer(){
 
 
 void loop(void) {
-// picture loop
- while (Serial.available())                   //While have data at Serial port this loop executes
+
+ while (Serial.available())              
      {                
-        float pwmval = Serial.parseFloat();  //Receive INTEGER value from Master throught RS-485
+        float pwmval = Serial.parseFloat();  
         if (pwmval)
         con=pwmval;
         Serial.println(con);
@@ -692,7 +666,7 @@ void loop(void) {
 u8g.firstPage();
 do {
   Ventilator();
-  //cursorAndPage();
+
   Buzzer();
   updateData();
   PageTranslator();
