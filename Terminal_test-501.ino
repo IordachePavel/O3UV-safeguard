@@ -16,7 +16,6 @@ int Timp = tm.Minute, Tst = tm.Minute;
 int boxPos = 1;
 int kGraph[4] = { 1, 2, 3, 4 };
 void draw(void) {
-  // graphic commands to redraw the complete screen should be placed here
   u8g.setFont(u8g_font_chikita);
 }
 void backarrowicon(void) {
@@ -90,17 +89,15 @@ void clockMode() {
   bool parse = false;
   bool config = false;
 
-  // get the date and time the compiler was run
   if (getDate(__DATE__) && getTime(__TIME__)) {
     parse = true;
-    // and configure the RTC with this info
     if (RTC.write(tm)) {
       config = true;
     }
   }
 
   while (!Serial)
-    ;  // wait for Arduino Serial Monitor
+    ;  
   if (parse && config) {
   } else if (parse) {
     Serial.println("DS1307 Communication Error :-{");
@@ -165,17 +162,17 @@ void updateData(void) {
   bool parse = false;
   bool config = false;
 
-  // get the date and time the compiler was run
+
   if (getDate(__DATE__) && getTime(__TIME__)) {
     parse = true;
-    // and configure the RTC with this info
+
     if (RTC.write(tm)) {
       config = true;
     }
   }
 
   while (!Serial)
-    ;  // wait for Arduino Serial Monitor
+
   if (parse && config) {
 
   } else if (parse) {
@@ -303,10 +300,10 @@ void setup(void) {
   bool parse = false;
   bool config = false;
 
-  // get the date and time the compiler was run
+
   if (getDate(__DATE__) && getTime(__TIME__)) {
     parse = true;
-    // and configure the RTC with this info
+
     if (RTC.write(tm)) {
       config = true;
     }
@@ -314,7 +311,7 @@ void setup(void) {
 
   Serial.begin(9600);
   while (!Serial)
-    ;  // wait for Arduino Serial Monitor
+    ; 
   delay(200);
   if (parse && config) {
     Serial.print("DS1307 configured Time=");
@@ -332,13 +329,13 @@ void setup(void) {
     Serial.println("\"");
   }
 
-  // assign default color value
+
   if (u8g.getMode() == U8G_MODE_R3G3B2)
-    u8g.setColorIndex(255);  // white
+    u8g.setColorIndex(255);  
   else if (u8g.getMode() == U8G_MODE_GRAY2BIT)
-    u8g.setColorIndex(3);  // max intensity
+    u8g.setColorIndex(3);  
   else if (u8g.getMode() == U8G_MODE_BW)
-    u8g.setColorIndex(1);  // pixel on
+    u8g.setColorIndex(1);
 }
 
 void drawTimeSettings() {
@@ -704,10 +701,10 @@ void Buzzer() {
 
 
 void loop(void) {
-  // picture loop
-  while (Serial.available())  //While have data at Serial port this loop executes
+
+  while (Serial.available())  
   {
-    float pwmval = Serial.parseFloat();  //Receive INTEGER value from Master throught RS-485
+    float pwmval = Serial.parseFloat();  /
     if (pwmval)
       con = pwmval;
     Serial.println(con);
