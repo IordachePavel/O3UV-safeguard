@@ -27,6 +27,7 @@ Sistemul monitorizează procesul de dezinfectare a unei încăperi detectând pr
 
 # Cerințe de sistem:
 Arduino IDE
+
 Librăriile pentru program:
 - Servo.h
 - SoftwareSerial.h
@@ -37,3 +38,31 @@ Librăriile pentru program:
 - DS1307RTC.h
 - SPI.h
 - SD.h
+
+Pentru conectivitatea bluetooth
+- Bluetooth Serial Terminal
+
+# Componente Utilizate:
+- Motor Stepper (Refolosit dintr-un DVD-ROM)
+- Motor Servo
+- Modul HC-05 Bluetooth
+- Condensator 100μF
+- Rezistor 1kΩ,2kΩ,1MΩ,5x 10kΩ,2x 220Ω
+- Senzor Ozon Winsen MQ-131
+- Breakout fotorezistor SMD
+- Mosfet (Recuperat dintr-o placă de control de imprimantă)
+- Releu 9V (Recuperat dintr-un modem Dial-Up)
+- Releu 9V DC pentru comutare 220V AC
+- Optocupler destinat pentru controlarea releului și izolarea electrică a sistemului (Refolosit dintr-un modem Dial-Up)
+- Ventilator pentru aerisire pe 220V AC 50 Hz 
+- 2X modul MAX RS 485
+- 2X Connector Ethernet
+- Ecran 128x64
+- 4 Butoane
+- 1 LED
+- Buzzer 5V
+- Modul RTC  DS1307 cu card SD
+- Circuit integrat cu 4 porți logice AND
+- Driver integrat de motor stepper A4988
+- 2x Placă Arduino Uno
+- Placă Arduino Nano
