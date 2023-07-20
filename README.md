@@ -18,7 +18,7 @@ Sistemul monitorizează procesul de dezinfectare a unei încăperi detectând pr
 
 # Schema electrică
 ### Terminal
-![image_2023-07-17_144517200](https://github.com/IordachePavel/O3UV-safeguard/assets/138784190/bf1bfa06-d77d-4cbb-aa20-1ec74090d1ce)
+![image](https://github.com/IordachePavel/O3UV-safeguard/assets/138784190/98bea0cb-1f16-43df-b191-4d96523bc7fd)
 ### Senzor
 ![image_2023-07-17_144614067](https://github.com/IordachePavel/O3UV-safeguard/assets/138784190/3716f78b-f16d-4e41-897b-99932d49fd41)
 ### Interfața Bluetooth 
