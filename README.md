@@ -30,12 +30,8 @@ Arduino IDE
 
 Librăriile pentru program:
 - Servo.h
-- SoftwareSerial.h
 - MQ131.h
 - U8glib.h
-- Wire.h
-- TimeLib.h
-- DS1307RTC.h
 - SPI.h
 - SD.h
 
